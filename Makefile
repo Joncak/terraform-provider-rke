@@ -2,7 +2,8 @@ TEST?=./...
 VETARGS?=-all
 GOFMT_FILES?=$$(find . -name '*.go' | grep -v vendor)
 CURRENT_VERSION = $(shell gobump show -r rke/)
-PROTOCOL_VERSION = $(shell go run tools/plugin-protocol-version/main.go)
+#PROTOCOL_VERSION = $(shell go run tools/plugin-protocol-version/main.go)
+PROTOCOL_VERSION = 5 
 
 BUILD_LDFLAGS = "-s -w \
 	  -X github.com/yamamoto-febc/terraform-provider-rke/version.Revision=`git rev-parse --short HEAD` \
