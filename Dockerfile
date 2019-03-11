@@ -6,8 +6,8 @@ RUN  apt-get update && apt-get -y install bash git make zip && apt-get clean && 
 
 RUN go get -u github.com/motemen/gobump/cmd/gobump
 
-ADD . /go/src/github.com/yamamoto-febc/terraform-provider-rke
-WORKDIR /go/src/github.com/yamamoto-febc/terraform-provider-rke
+ADD . /go/src/github.com/joncak/terraform-provider-rke
+WORKDIR /go/src/github.com/joncak/terraform-provider-rke
 RUN make build
 ###
 
@@ -17,4 +17,4 @@ LABEL MAINTAINER 'Kazumichi Yamamoto <yamamoto.febc@gmail.com>'
 
 RUN set -x && apk add --no-cache --update ca-certificates
 RUN mkdir -p /root/.terraform.d/plugins
-COPY --from=builder /go/src/github.com/yamamoto-febc/terraform-provider-rke/bin/* /root/.terraform.d/plugins/
+COPY --from=builder /go/src/github.com/joncak/terraform-provider-rke/bin/* /root/.terraform.d/plugins/
